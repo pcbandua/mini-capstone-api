@@ -24,4 +24,15 @@ class ProductsController < ApplicationController
     # render that recipe
     render template: "products/show"
   end
+
+  def update
+    @product = Product.find_by(id: params[:id])
+    @product.update(
+      name: params[:name] || @product.name,
+      price: params[:price] || @product.price,
+      image_url: params[:image_url] || @product.image_url,
+      description: params[:description_url] || @product.description,
+    )
+    render :show
+  end
 end
