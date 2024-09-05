@@ -16,16 +16,16 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     assert_equal Product.count, data.length
   end
+  test "create" do
+    assert_difference "Product.count", 1 do
+      post "/product.json", params: {
+                              name: "Glasses",
+                              price: 90,
+                              image_url: "http://www.google.com", description: "helloooooooooo",
+                            }
+      assert_response 200
+    end
+  end
 end
 
 # name, price (integer), image_url, and description.
-test "create" do
-  assert_difference "Product.count", 1 do
-    post "/product.json", params: {
-                            name: "Glasses",
-                            price: 90,
-                            image_url: "http://www.google.com", description: "helloooooooooo",
-                          }
-    assert_response 200
-  end
-end
