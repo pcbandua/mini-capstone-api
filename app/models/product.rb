@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-
+  validates :name, presence: true, uniqueness: true
   #SCHEMA
   # create_table "products", force: :cascade do |t|
   #   t.string "name"

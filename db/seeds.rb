@@ -22,3 +22,5 @@ Product.create(name: "Wave Brush", price: 18, image_url: "https://shop.frederick
 Product.create(name: "Wacom", price: 80, image_url: "https://m.media-amazon.com/images/I/61eG0iYBj+L._AC_SY300_SX300_.jpg", description: "Wacom Intuos Small Bluetooth Graphics Drawing Tablet")
 
 Product.create(name: "Bevel Beard Trimmer", price: 180, image_url: "https://cdn11.bigcommerce.com/s-9f28jzowu1/images/stencil/1000w/products/130/472/800109-C_3__01950__29804__56674__00762.1622660026.386.513.jpg?c=1", description: "A crowd favorite — our tried and true Bevel Trimmer covers the basics and more, earning a permanent counter spot.")
+
+Supplier.create()
