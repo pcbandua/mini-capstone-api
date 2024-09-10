@@ -26,6 +26,7 @@ class Product < ApplicationRecord
 
   # • Modify the products view template to display these model methods.
 # belongs_to: Supplier
+has_many :images
 
 def supplier
   Supplier.find_by(:id supplier_id)
