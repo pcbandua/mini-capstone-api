@@ -25,8 +25,14 @@ class Product < ApplicationRecord
   # • Create a model method called total which will return the sum of the price + tax.
 
   # • Modify the products view template to display these model methods.
-  # belongs_to: Supplier
+
   has_many :images
+
+  def image
+    Image.find_by(id: product_id)
+  end
+
+  belongs_to :supplier
 
   def supplier
     Supplier.find_by(id: supplier_id)
