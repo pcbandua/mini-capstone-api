@@ -25,7 +25,7 @@ class Product < ApplicationRecord
   # • Create a model method called total which will return the sum of the price + tax.
 
   # • Modify the products view template to display these model methods.
-
+   has_many :orders
   has_many :images
 
   def image
