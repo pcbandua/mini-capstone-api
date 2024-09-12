@@ -20,3 +20,13 @@
   json.created_at image.created_at
   json.updated_at images.updated_at
   end
+
+  json.id orders.id
+  json.user_id orders.user_id
+  json.product_id orders.product_id
+  json.quantity orders.quantity
+  json.subtotal orders.subtotal
+  json.tax orders.tax
+  json.total orders.total
+  json.created_at orders.created_at
+  json.updated_at orders.updated_at
