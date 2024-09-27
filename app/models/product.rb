@@ -1,40 +1,46 @@
 class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true
-  #SCHEMA
-  # create_table "products", force: :cascade do |t|
-  #   t.string "name"
-  #   t.integer "price"
-  #   t.string "image_url"
-  #   t.text "description"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
+  validates :name, uniqueness: true
+  validates :price, numericality: { greater_than: 0 }
+  validates :description, presence: true
+  validates :description, length: { in: 10..500 }
+
+  belongs_to :supplier
+  has_many :images
+
+  # has_many :orders
+
+  # def image
+  #   Image.find_by(id: product_id)
+  # end
+
+  #   def supplier
+  #     Supplier.find_by(id: supplier_id)
+  #   end
   # end
 
   # • Create a model method called is_discounted? that returns true if an item is less than or equal to $10 and false otherwise.
 
-  # def is_discounted?
-  # if  price <=10
-  #   p true
-  # else
-  #   p false
-  # end
-
-  # end
-  # • Create a model method called tax which will return the tax that would be charged for a particular product. (Assume a 9% tax rate.)
-
-  # • Create a model method called total which will return the sum of the price + tax.
-
-  # • Modify the products view template to display these model methods.
-   has_many :orders
-  has_many :images
-
-  def image
-    Image.find_by(id: product_id)
+  def is_discounted?
+    if price <= 10
+      return true
+    else
+      return false
+    end
   end
 
-  belongs_to :supplier
+  def tax
+    price * 0.09
+  end
 
-  def supplier
-    Supplier.find_by(id: supplier_id)
+  def total
+    tax + price
   end
 end
+
+# end
+# • Create a model method called tax which will return the tax that would be charged for a particular product. (Assume a 9% tax rate.)
+
+# • Create a model method called total which will return the sum of the price + tax.
+
+# • Modify the products view template to display these model methods.

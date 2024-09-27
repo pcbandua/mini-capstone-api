@@ -4,12 +4,11 @@ class ProductsController < ApplicationController
     render template: "products/index"
   end
 
-  # name, price (integer), image_url, and description.
+  # name, price (integer), and description.
   def create
     @product = Product.create(
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
       description: params[:description_url],
 
     )
@@ -30,7 +29,6 @@ class ProductsController < ApplicationController
     @product.update(
       name: params[:name] || @product.name,
       price: params[:price] || @product.price,
-      image_url: params[:image_url] || @product.image_url,
       description: params[:description_url] || @product.description,
     )
     render :show

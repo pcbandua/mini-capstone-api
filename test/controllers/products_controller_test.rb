@@ -3,7 +3,6 @@ require "test_helper"
 # create_table "products", force: :cascade do |t|
 #   t.string "name"
 #   t.integer "price"
-#   t.string "image_url"
 #   t.text "description"
 #   t.datetime "created_at", null: false
 #   t.datetime "updated_at", null: false
@@ -21,7 +20,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       post "/product.json", params: {
                               name: "Glasses",
                               price: 90,
-                              image_url: "http://www.google.com", description: "helloooooooooo",
+                              description: "helloooooooooo",
                             }
       assert_response 200
     end
@@ -32,7 +31,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "name", "price", "image_url", "description"]
+    assert_equal ["id", "name", "price", "description"]
   end
 
   test "update" do
@@ -56,7 +55,7 @@ end
 
 # test "create" do
 #   assert_difference "Product.count", 1 do
-#     post "/products.json", params: { product: { name: "test", price: 10, image_url: "test.jpg", description: "test description" } }
+#     post "/products.json", params: { product: { name: "test", price: 10, "test.jpg", description: "test description" } }
 #     assert_response 200
 #   end
 
@@ -74,7 +73,6 @@ end
 #   data = JSON.parse(response.body)
 #   assert_equal "Updated name", data["name"]
 #   assert_equal product.price.to_s, data["price"]
-#   assert_equal product.image_url, data["image_url"]
 #   assert_equal product.description, data["description"]
 
 #   patch "/products/#{product.id}.json", params: { name: "" }
