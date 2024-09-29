@@ -22,7 +22,7 @@ class Product < ApplicationRecord
   # • Create a model method called is_discounted? that returns true if an item is less than or equal to $10 and false otherwise.
 
   def is_discounted?
-    if price <= 10
+    if price && price <= 10
       return true
     else
       return false
@@ -30,11 +30,12 @@ class Product < ApplicationRecord
   end
 
   def tax
+    return 0 unless price
     price * 0.09
   end
 
   def total
-    tax + price
+    (tax || 0) + (price || 0)
   end
 end
 
