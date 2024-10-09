@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/products" => "products#index"
   post "/products" => "products#create"
   get "/products/:id" => "products#show"
-  put "/producsts/:id" => "products#update"
+  put "/products/:id" => "products#update"
   delete "/products/:id" => "products#destroy"
 
   post "/users" => "users#create"
@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get "/orders" => "orders#index"
   post "/orders" => "orders#create"
   get "/orders/:id" => "orders#show"
+
+  get "/carted_products" => "carted_products#index"
+  post "/carted_products" => "carted_products#create"
+  delete "/carted_products/:id" => "carted_products#destroy"
 
   # Defines the root path route ("/")
   # root "posts#index"

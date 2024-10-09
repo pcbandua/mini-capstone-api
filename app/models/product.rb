@@ -1,25 +1,14 @@
 class Product < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
-  validates :name, uniqueness: true
+  # validates :name, presence: true, uniqueness: true
+  # validates :name, uniqueness: true
   validates :price, numericality: { greater_than: 0 }
   validates :description, presence: true
   validates :description, length: { in: 10..500 }
 
   belongs_to :supplier
   has_many :images
-
-  # has_many :orders
-
-  # def image
-  #   Image.find_by(id: product_id)
-  # end
-
-  #   def supplier
-  #     Supplier.find_by(id: supplier_id)
-  #   end
-  # end
-
-  # • Create a model method called is_discounted? that returns true if an item is less than or equal to $10 and false otherwise.
+  has_many :category_products
+  has_many :categories, through: :category_products
 
   def is_discounted?
     if price && price <= 10
