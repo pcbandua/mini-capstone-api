@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
         tax: tax,
         total: total,
       )
+      @order.save!
 
       carted_products.update_all(status: "purchased", order_id: @order.id)
     else
@@ -56,11 +57,5 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: params[:id])
     render :show
-  end
-
-  def destroy
-    @order = Order.find_by(id: params[:id])
-    @order.change[:status]
-    render json: { message: "order deleted successfully" }
   end
 end

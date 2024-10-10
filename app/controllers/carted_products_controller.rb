@@ -31,4 +31,10 @@ class CartedProductsController < ApplicationController
     )
     render :show
   end
+
+  def destroy
+    @order = Order.find_by(id: params[:id])
+    @order.status = "removed"
+    render json: { message: "order deleted successfully" }
+  end
 end
