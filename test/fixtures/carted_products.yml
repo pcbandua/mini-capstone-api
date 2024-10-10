@@ -4,7 +4,6 @@ one:
   product: one
   user: one
   quantity: 1
-  price: 1
   status: MyString
   order: one
 
@@ -12,6 +11,5 @@ two:
   product: two
   user: two
   quantity: 1
-  price: 1
   status: MyString
   order: two

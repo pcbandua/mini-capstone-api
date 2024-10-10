@@ -5,27 +5,6 @@ class OrdersController < ApplicationController
     render :index
   end
 
-  # def create
-  #   @order = Order.create(
-  #     user_id: 1,
-  #     product_id: params[:product_id],
-  #     quantity: params[:quantity],
-  #     subtotal: params[:subtotal],
-  #     tax: params[:tax],
-  #     total: params[:total],
-  #   )
-  #   render :show
-  # end
-
-  # def create
-  #   @order = Order.where(user_id: 1, CartedProduct.status: "carted")
-
-  #   if CartedProduct.user_id[1] == "carted"
-  #     subtotal = product_id * quantity
-  #     total = subtotal + tax
-  #   else
-  #   end
-
   def create
     carted_products = CartedProduct.where(user_id: 1, status: "carted")
 

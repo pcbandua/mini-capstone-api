@@ -29,12 +29,14 @@ class CartedProductsController < ApplicationController
       quantity: params[:quantity],
       status: "carted",
     )
+    @carted_product.save
     render :show
   end
 
   def destroy
-    @order = Order.find_by(id: params[:id])
-    @order.status = "removed"
-    render json: { message: "order deleted successfully" }
+    @ocarted_product = CartedProduct.find_by(id: params[:id])
+    @carted_product.status = "removed"
+    @carted_product.save
+    render json: { message: "item deleted successfully" }
   end
 end
